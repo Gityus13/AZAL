@@ -1,0 +1,1135 @@
+<!DOCTYPE html>
+<html lang="az">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AZAL - Azərbaycan Hava Yollarıe</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&family=Open+Sans:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary: #0056a3;
+            --secondary: #d52b1e;
+            --accent: #f8b800;
+            --light: #f5f7fa;
+            --dark: #222831;
+            --gray: #6c757d;
+            --light-gray: #e9ecef;
+            --transition: all 0.3s ease;
+            --shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            --border-radius: 8px;
+        }
+
+        body {
+            font-family: 'Open Sans', sans-serif;
+            line-height: 1.6;
+            color: var(--dark);
+            background-color: var(--light);
+            overflow-x: hidden;
+        }
+
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 700;
+            line-height: 1.3;
+            margin-bottom: 1rem;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+            transition: var(--transition);
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        img {
+            max-width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .section {
+            padding: 80px 0;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 50px;
+            position: relative;
+            color: var(--primary);
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background-color: var(--secondary);
+            border-radius: 2px;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 12px 28px;
+            background-color: var(--primary);
+            color: white;
+            border-radius: var(--border-radius);
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            border: none;
+            cursor: pointer;
+            transition: var(--transition);
+            font-size: 14px;
+        }
+
+        .btn:hover {
+            background-color: var(--secondary);
+            transform: translateY(-3px);
+            box-shadow: var(--shadow);
+        }
+
+        .btn-secondary {
+            background-color: var(--secondary);
+        }
+
+        .btn-secondary:hover {
+            background-color: var(--primary);
+        }
+
+        /* Başlıq Stili */
+        header {
+            background-color: white;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000;
+        }
+
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 20px;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            cursor: pointer;
+        }
+
+        .logo-img {
+            height: 50px;
+        }
+
+        .logo-text {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 700;
+            font-size: 24px;
+            color: var(--primary);
+        }
+
+        .logo-text span {
+            color: var(--secondary);
+        }
+
+        .nav-menu {
+            display: flex;
+            gap: 30px;
+        }
+
+        .nav-link {
+            font-weight: 600;
+            position: relative;
+            padding: 5px 0;
+        }
+
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background-color: var(--secondary);
+            transition: var(--transition);
+        }
+
+        .nav-link:hover::after,
+        .nav-link.active::after {
+            width: 100%;
+        }
+
+        .nav-link:hover,
+        .nav-link.active {
+            color: var(--secondary);
+        }
+
+        .hamburger {
+            display: none;
+            cursor: pointer;
+            font-size: 24px;
+            color: var(--primary);
+        }
+
+        /* Əsas Bölmə */
+        .hero {
+            background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('https://images.unsplash.com/photo-1436491865332-7a61a109cc05?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2074&q=80');
+            background-size: cover;
+            background-position: center;
+            color: white;
+            height: 100vh;
+            min-height: 700px;
+            display: flex;
+            align-items: center;
+            text-align: center;
+            margin-top: 80px;
+        }
+
+        .hero-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .hero h1 {
+            font-size: 48px;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
+        }
+
+        .hero p {
+            font-size: 20px;
+            margin-bottom: 30px;
+            opacity: 0.9;
+        }
+
+        /* Statistik Sayğac */
+        .stats {
+            background-color: var(--primary);
+            color: white;
+            padding: 60px 0;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 30px;
+            text-align: center;
+        }
+
+        .stat-item h3 {
+            font-size: 48px;
+            color: white;
+            margin-bottom: 10px;
+        }
+
+        .stat-item p {
+            font-size: 18px;
+            opacity: 0.9;
+        }
+
+        /* Təyyarə Qrupu Bölməsi */
+        .fleet-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .fleet-card {
+            background-color: white;
+            border-radius: var(--border-radius);
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+        }
+
+        .fleet-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+        }
+
+        .fleet-img {
+            height: 200px;
+            width: 100%;
+            object-fit: cover;
+        }
+
+        .fleet-info {
+            padding: 20px;
+        }
+
+        .fleet-info h3 {
+            color: var(--primary);
+            margin-bottom: 10px;
+        }
+
+        .fleet-specs {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-top: 15px;
+        }
+
+        .spec {
+            background-color: var(--light-gray);
+            padding: 5px 10px;
+            border-radius: 20px;
+            font-size: 14px;
+            font-weight: 600;
+            color: var(--primary);
+        }
+
+        /* Təyinat Məntəqələri */
+        .destinations {
+            background-color: var(--light-gray);
+        }
+
+        .destination-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 30px;
+        }
+
+        .destination-card {
+            background-color: white;
+            border-radius: var(--border-radius);
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+        }
+
+        .destination-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .destination-img {
+            height: 180px;
+            width: 100%;
+            object-fit: cover;
+        }
+
+        .destination-info {
+            padding: 20px;
+        }
+
+        .destination-info h3 {
+            color: var(--primary);
+        }
+
+        .destination-price {
+            font-size: 24px;
+            font-weight: 700;
+            color: var(--secondary);
+            margin-top: 10px;
+        }
+
+        /* Xidmətlər */
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 30px;
+        }
+
+        .service-card {
+            background-color: white;
+            border-radius: var(--border-radius);
+            padding: 30px;
+            text-align: center;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+        }
+
+        .service-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .service-icon {
+            font-size: 40px;
+            color: var(--primary);
+            margin-bottom: 20px;
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--dark);
+            color: white;
+            padding: 70px 0 20px;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+
+        .footer-column h3 {
+            color: white;
+            margin-bottom: 25px;
+            position: relative;
+            padding-bottom: 10px;
+        }
+
+        .footer-column h3::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 50px;
+            height: 3px;
+            background-color: var(--secondary);
+        }
+
+        .footer-links li {
+            margin-bottom: 12px;
+        }
+
+        .footer-links a:hover {
+            color: var(--accent);
+            padding-left: 5px;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .social-link {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background-color: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            transition: var(--transition);
+        }
+
+        .social-link:hover {
+            background-color: var(--secondary);
+            transform: translateY(-3px);
+        }
+
+        .copyright {
+            text-align: center;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            font-size: 14px;
+            color: rgba(255, 255, 255, 0.7);
+        }
+
+        /* Modal */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.8);
+            z-index: 2000;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+
+        .modal.active {
+            display: flex;
+        }
+
+        .modal-content {
+            background-color: white;
+            border-radius: var(--border-radius);
+            max-width: 800px;
+            width: 100%;
+            max-height: 90vh;
+            overflow-y: auto;
+            position: relative;
+        }
+
+        .modal-close {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            font-size: 24px;
+            color: var(--dark);
+            cursor: pointer;
+            z-index: 10;
+            background-color: white;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: var(--shadow);
+        }
+
+        .modal-body {
+            padding: 40px;
+        }
+
+        .modal-img {
+            width: 100%;
+            height: 300px;
+            object-fit: cover;
+            border-radius: var(--border-radius);
+            margin-bottom: 20px;
+        }
+
+        /* Responsive Stil */
+        @media (max-width: 992px) {
+            .hero h1 {
+                font-size: 40px;
+            }
+            
+            .fleet-grid,
+            .destination-grid,
+            .services-grid {
+                grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            }
+        }
+
+        @media (max-width: 768px) {
+            .nav-menu {
+                position: fixed;
+                top: 80px;
+                left: -100%;
+                width: 100%;
+                flex-direction: column;
+                background-color: white;
+                text-align: center;
+                padding: 30px 0;
+                box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+                transition: var(--transition);
+                gap: 0;
+            }
+
+            .nav-menu.active {
+                left: 0;
+            }
+
+            .nav-item {
+                margin: 15px 0;
+            }
+
+            .hamburger {
+                display: block;
+            }
+
+            .hero h1 {
+                font-size: 32px;
+            }
+
+            .hero p {
+                font-size: 18px;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .hero h1 {
+                font-size: 28px;
+            }
+            
+            .section {
+                padding: 60px 0;
+            }
+            
+            .modal-body {
+                padding: 30px 20px;
+            }
+        }
+
+        /* Animasiyalar */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .fade-in {
+            animation: fadeIn 0.8s ease forwards;
+        }
+
+        .delay-1 { animation-delay: 0.2s; }
+        .delay-2 { animation-delay: 0.4s; }
+        .delay-3 { animation-delay: 0.6s; }
+        .delay-4 { animation-delay: 0.8s; }
+    </style>
+</head>
+<body>
+    <!-- Başlıq -->
+    <header>
+        <div class="header-container container">
+            <a href="https://download.logo.wine/logo/Azerbaijan_Airlines/Azerbaijan_Airlines-Logo.wine.png" target="_blank" class="logo">
+                <div class="logo-img">
+                    <img src="https://download.logo.wine/logo/Azerbaijan_Airlines/Azerbaijan_Airlines-Logo.wine.png" alt="AZAL Logo" style="width: 50px; height: 50px; border-radius: 50%; object-fit: contain;">
+                </div>
+<div class="logo-text">AZAL <span>Hava Yolları</span></div>
+            </a>
+            
+            <nav>
+                <ul class="nav-menu">
+                    <li class="nav-item"><a href="#home" class="nav-link active">Ana Səhifə</a></li>
+                    <li class="nav-item"><a href="#fleet" class="nav-link">Təyyarə Qrupu</a></li>
+                    <li class="nav-item"><a href="#destinations" class="nav-link">Təyinat Məntəqələri</a></li>
+                    <li class="nav-item"><a href="#services" class="nav-link">Xidmətlər</a></li>
+                    <li class="nav-item"><a href="#about" class="nav-link">Haqqımızda</a></li>
+                    <li class="nav-item"><a href="#contact" class="nav-link">Əlaqə</a></li>
+                </ul>
+            </nav>
+            
+            <div class="hamburger">
+                <i class="fas fa-bars"></i>
+            </div>
+        </div>
+    </header>
+
+    <!-- Əsas Bölmə -->
+    <section class="hero" id="home">
+        <div class="container">
+            <div class="hero-content fade-in">
+                <h1>Azərbaycan Hava Yolları ilə Uçun</h1>
+                <p>Növbəti səyahətinizdə rahatlıq, təhlükəsizlik və Azərbaycan qonaqpərvərliyinin mükəmməl qarışığını yaşayın. Müasir təyyarə qrupumuzla dünyanın 40-dan çox təyinat məntəqəsini kəşf edin.</p>
+</div>
+        </div>
+    </section>
+
+    <!-- Statistik Bölmə -->
+    <section class="stats">
+        <div class="container">
+            <div class="stats-grid">
+                <div class="stat-item">
+                    <h3 id="stat1">0</h3>
+                    <p>Təyinat Məntəqəsi</p>
+                </div>
+                <div class="stat-item">
+                    <h3 id="stat2">0</h3>
+                    <p>Təyyarə Sayı</p>
+                </div>
+                <div class="stat-item">
+                    <h3 id="stat3">0</h3>
+                    <p>İllik Təcrübə</p>
+                </div>
+                <div class="stat-item">
+                    <h3 id="stat4">0</h3>
+                    <p>İllik Sərnişin</p>
+</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Təyyarə Qrupu Bölməsi -->
+    <section class="section" id="fleet">
+        <div class="container">
+            <h2 class="section-title">Müasir Təyyarə Qrupumuz</h2>
+            <div class="fleet-grid">
+                <!-- Airbus A320neo -->
+                <div class="fleet-card fade-in delay-1">
+                    <img src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" alt="Airbus A320neo" class="fleet-img">
+                    <div class="fleet-info">
+                        <h3>Airbus A320neo</h3>
+                        <p>A320neo ən son mühərrik texnologiyası və aerodinamik yaxşılaşdırmaları təqdim edir, yanacaq sərfiyyatını və emissiyaları 20% azaldır.</p>
+                        <div class="fleet-specs">
+                            <span class="spec">Tutum: 180</span>
+                            <span class="spec">Mənzil: 3,400 NM</span>
+                            <span class="spec">Sürət: 511 mph</span>
+                        </div>
+                        <button class="btn btn-secondary view-details" data-aircraft="a320neo">Ətraflı Məlumat</button>
+                    </div>
+                </div>
+                
+                <!-- Boeing 787 Dreamliner -->
+                <div class="fleet-card fade-in delay-2">
+                    <img src="https://images.unsplash.com/photo-1578839951301-5d5d5b5b5b5b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" alt="Boeing 787 Dreamliner" class="fleet-img">
+                    <div class="fleet-info">
+                        <h3>Boeing 787 Dreamliner</h3>
+                        <p>787 Dreamliner sərnişinlərə təkmilləşdirilmiş salon təzyiqi və rütubət səviyyəsi ilə daha rahat uçuş təcrübəsi təqdim edir.</p>
+                        <div class="fleet-specs">
+                            <span class="spec">Tutum: 290</span>
+                            <span class="spec">Mənzil: 7,530 NM</span>
+                            <span class="spec">Sürət: 587 mph</span>
+                        </div>
+                        <button class="btn btn-secondary view-details" data-aircraft="b787">Ətraflı Məlumat</button>
+                    </div>
+                </div>
+                
+                <!-- Airbus A350-900 -->
+                <div class="fleet-card fade-in delay-3">
+                    <img src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" alt="Airbus A350-900" class="fleet-img">
+                    <div class="fleet-info">
+                        <h3>Airbus A350-900</h3>
+                        <p>A350-900 ən müasir və səmərəli geniş gövdəli təyyarədir, uzaqməsafəli marşrutlarda fövqəladə sərnişin rahatlığı təqdim edir.</p>
+                        <div class="fleet-specs">
+                            <span class="spec">Tutum: 325</span>
+                            <span class="spec">Mənzil: 8,100 NM</span>
+                            <span class="spec">Sürət: 567 mph</span>
+                        </div>
+                        <button class="btn btn-secondary view-details" data-aircraft="a350">Ətraflı Məlumat</button>
+                    </div>
+                </div>
+                
+                <!-- Boeing 777-300ER -->
+                <div class="fleet-card fade-in delay-4">
+                    <img src="https://images.unsplash.com/photo-1544098282-7dd2f47d6549?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" alt="Boeing 777-300ER" class="fleet-img">
+                    <div class="fleet-info">
+                        <h3>Boeing 777-300ER</h3>
+                        <p>777-300ER dünyanın ən böyük iki mühərrikli reaktiv təyyarəsidir, transkontinental uçuşlarda etibarlılığı və rahatlığı ilə tanınır.</p>
+                        <div class="fleet-specs">
+                            <span class="spec">Tutum: 396</span>
+                            <span class="spec">Mənzil: 7,370 NM</span>
+                            <span class="spec">Sürət: 590 mph</span>
+                        </div>
+                        <button class="btn btn-secondary view-details" data-aircraft="b777">Ətraflı Məlumat</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Təyinat Məntəqələri -->
+    <section class="section destinations" id="destinations">
+        <div class="container">
+            <h2 class="section-title">Populyar Təyinat Məntəqələri</h2>
+            <div class="destination-grid">
+                <!-- İstanbul -->
+                <div class="destination-card fade-in delay-1">
+                    <img src="https://images.unsplash.com/photo-1527838832700-5059252407fa?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1998&q=80" alt="İstanbul" class="destination-img">
+                    <div class="destination-info">
+                        <h3>İstanbul, Türkiyə</h3>
+                        <p>Şərqin Qərblə görüşdüyü, zəngin tarixi, heyrətamiz memarlığı və canlı mədəniyyəti olan şəhərə uçun.</p>
+                        <div class="destination-price">249 AZN-dən</div>
+                        <a href="https://www.azal.az/az" target="_blank" class="btn">İndi Rezervasiya Et</a>
+                    </div>
+                </div>
+                
+                <!-- London -->
+                <div class="destination-card fade-in delay-2">
+                    <img src="https://images.unsplash.com/photo-1513635269975-59663e0ac1ad?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" alt="London" class="destination-img">
+                    <div class="destination-info">
+                        <h3>London, Böyük Britaniya</h3>
+                        <p>Britaniya paytaxtının tarixi abidələrini, dünya səviyyəli muzeylərini və kosmopolit atmosferini yaşayın.</p>
+                        <div class="destination-price">399 AZN-dən</div>
+                        <a href="https://www.azal.az/az" target="_blank" class="btn">İndi Rezervasiya Et</a>
+                    </div>
+                </div>
+                
+                <!-- Dubay -->
+                <div class="destination-card fade-in delay-3">
+                    <img src="https://images.unsplash.com/photo-1512453979798-5ea266f8880c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" alt="Dubay" class="destination-img">
+                    <div class="destination-info">
+                        <h3>Dubay, BƏƏ</h3>
+                        <p>Göyərtələn göydələnləri, lüks alış-veriş və heyrətamiz səhra mənzərələri olan futuristik şəhəri kəşf edin.</p>
+                        <div class="destination-price">329 AZN-dən</div>
+                        <a href="https://www.azal.az/az" target="_blank" class="btn">İndi Rezervasiya Et</a>
+                    </div>
+                </div>
+                
+                <!-- Moskva -->
+                <div class="destination-card fade-in delay-4">
+                    <img src="https://images.unsplash.com/photo-1513326738677-b964603b136d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" alt="Moskva" class="destination-img">
+                    <div class="destination-info">
+                        <h3>Moskva, Rusiya</h3>
+                        <p>İkonik Qırmızı Meydanı, Kremli və zəngin mədəni irsi ilə Rusiyanın ürəyini kəşf edin.</p>
+                        <div class="destination-price">289 AZN-dən</div>
+                        <a href="https://www.azal.az/az" target="_blank" class="btn">İndi Rezervasiya Et</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Xidmətlər -->
+    <section class="section" id="services">
+        <div class="container">
+            <h2 class="section-title">Xidmətlərimiz</h2>
+            <div class="services-grid">
+                <div class="service-card fade-in delay-1">
+                    <div class="service-icon">
+                        <i class="fas fa-utensils"></i>
+                    </div>
+                    <h3>Uçuşda Yemək</h3>
+                    <p>Mükafatlı şeflər tərəfindən hazırlanmış, həm beynəlxalq, həm də ənənəvi Azərbaycan mətbəxini əks etdirən qurmet yeməklərin həzzini çıxarın.</p>
+                </div>
+                
+                <div class="service-card fade-in delay-2">
+                    <div class="service-icon">
+                        <i class="fas fa-chair"></i>
+                    </div>
+                    <h3>Rahat Oturacaqlar</h3>
+                    <p>Bütün siniflərdə əlavə ayaq məkanı və tənzimlənən baş dəstəyi olan ergonomik dizayn edilmiş oturacaqlarda rahatlaşın.</p>
+                </div>
+                
+                <div class="service-card fade-in delay-3">
+                    <div class="service-icon">
+                        <i class="fas fa-wifi"></i>
+                    </div>
+                    <h3>Bortda Wi-Fi</h3>
+                    <p>Əksər uçuşlarda mövcud olan yüksək sürətli Wi-Fi ilə əlaqəli qalın, işləmək və ya özünüzü əyləndirmək imkanı əldə edin.</p>
+                </div>
+                
+                <div class="service-card fade-in delay-4">
+                    <div class="service-icon">
+                        <i class="fas fa-suitcase-rolling"></i>
+                    </div>
+                    <h3>Əlavə Baqaj</h3>
+                    <p>Sizin rahatlığınız üçün əlavə çəki almaq seçimi ilə səxavətli baqaj norması.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Haqqımızda Bölməsi -->
+    <section class="section" id="about">
+        <div class="container">
+            <h2 class="section-title">Azərbaycan Hava Yolları Haqqında</h2>
+            <div class="about-content fade-in">
+                <div style="display: flex; flex-wrap: wrap; gap: 40px; align-items: center;">
+                    <div style="flex: 1; min-width: 300px;">
+                        <h3 style="color: var(--primary); margin-bottom: 20px;">Azərbaycanın Milli Hava Yolları</h3>
+                        <p style="margin-bottom: 20px;">Azərbaycan Hava Yolları (AZAL) Azərbaycanın milli hava yolları şirkətidir, qərargahı Bakıdadır. 1992-ci ildə təsis edilən şirkət Asiya, Avropa və MDB ölkələrində 40-dan çox təyinat məntəqəsinə nizamli sərnişin və yük xidmətləri həyata keçirir.</p>
+                        <p style="margin-bottom: 20px;">AZAL Beynəlxalq Hava Nəqliyyatı Assosiasiyasının (IATA) üzvüdür və təhlükəsizlik, xidmət keyfiyyəti və əməliyyat mükəmməlliyinə sadiqliyi ilə tanınır.</p>
+                        <p>Missiyamız Azərbaycanı dünya ilə birləşdirmək, eyni zamanda zəngin mədəni irsimizi və isti qonaqpərvərliyimizi əks etdirən fövqəladə xidmət göstərməkdir.</p>
+                    </div>
+                    <div style="flex: 1; min-width: 300px;">
+                        <img src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" alt="AZAL Təyyarəsi" style="border-radius: var(--border-radius); box-shadow: var(--shadow);">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer id="contact">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <h3>AZAL Hava Yolları</h3>
+                    <p>Azərbaycanın milli hava yolları, sizi fövqəladə xidmət və Azərbaycan qonaqpərvərliyi ilə dünyanın hər yerinə bağlayır.</p>
+                    <div class="social-links">
+                        <a href="https://www.facebook.com/azal.az/" target="_blank" class="social-link"><i class="fab fa-facebook-f"></i></a>
+                        <a href="https://twitter.com/azal_airlines" target="_blank" class="social-link"><i class="fab fa-twitter"></i></a>
+                        <a href="https://www.instagram.com/azal_airlines/" target="_blank" class="social-link"><i class="fab fa-instagram"></i></a>
+                        <a href="https://www.youtube.com/user/azalchannel" target="_blank" class="social-link"><i class="fab fa-youtube"></i></a>
+                        <a href="https://www.linkedin.com/company/azerbaijan-airlines/" target="_blank" class="social-link"><i class="fab fa-linkedin-in"></i></a>
+                    </div>
+                </div>
+                
+                <div class="footer-column">
+                    <h3>Sürətli Keçidlər</h3>
+                    <ul class="footer-links">
+                        <li><a href="#home">Ana Səhifə</a></li>
+                        <li><a href="#fleet">Təyyarə Qrupu</a></li>
+                        <li><a href="#destinations">Təyinat Məntəqələri</a></li>
+                        <li><a href="#services">Xidmətlər</a></li>
+                        <li><a href="#about">Haqqımızda</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-column">
+                    <h3>Əlaqə Məlumatları</h3>
+                    <ul class="footer-links">
+                        <li><i class="fas fa-map-marker-alt" style="margin-right: 10px;"></i> Bakı Heydər Əliyev Beynəlxalq Hava Limanı, Azərbaycan</li>
+                        <li><i class="fas fa-phone" style="margin-right: 10px;"></i> +994 12 493 00 01</li>
+                        <li><i class="fas fa-envelope" style="margin-right: 10px;"></i> info@azal.az</li>
+                        <li><i class="fas fa-clock" style="margin-right: 10px;"></i> 24/7 Müştəri Xidməti</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="copyright">
+                <p>&copy; 2023 Azərbaycan Hava Yolları (AZAL). Bütün hüquqlar qorunur.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Təyyarə Detalları Modalı -->
+    <div class="modal" id="aircraftModal">
+        <div class="modal-content">
+            <div class="modal-close" id="modalClose">
+                <i class="fas fa-times"></i>
+            </div>
+            <div class="modal-body" id="modalBody">
+                <!-- Modal məzmunu JavaScript tərəfindən daxil ediləcək -->
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // DOM Elementləri
+        const hamburger = document.querySelector('.hamburger');
+        const navMenu = document.querySelector('.nav-menu');
+        const navLinks = document.querySelectorAll('.nav-link');
+        const viewDetailsButtons = document.querySelectorAll('.view-details');
+        const aircraftModal = document.getElementById('aircraftModal');
+        const modalClose = document.getElementById('modalClose');
+        const modalBody = document.getElementById('modalBody');
+        const stats = document.querySelectorAll('.stat-item h3');
+        
+        // Mobil Menyu Açar/Qapaq
+        hamburger.addEventListener('click', () => {
+            navMenu.classList.toggle('active');
+            hamburger.innerHTML = navMenu.classList.contains('active') 
+                ? '<i class="fas fa-times"></i>' 
+                : '<i class="fas fa-bars"></i>';
+        });
+        
+        // Linkə klikləyəndə mobil menyunu bağla
+        navLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                navMenu.classList.remove('active');
+                hamburger.innerHTML = '<i class="fas fa-bars"></i>';
+                
+                // Aktiv linki yenilə
+                navLinks.forEach(item => item.classList.remove('active'));
+                link.classList.add('active');
+            });
+        });
+        
+        // Təyyarə Detalları Modalı
+        const aircraftData = {
+            a320neo: {
+                name: "Airbus A320neo",
+                image: "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80",
+                description: "Airbus A320neo (yeni mühərrik seçimi) dünyanın ən qabaqcıl tək koridorlu təyyarələrindən biridir. Ən son mühərrik texnologiyasını, Köpəkbalığı qanad ucları daxil olmaqla aerodinamik yaxşılaşdırmaları və rahat salon dizaynını təqdim edir.",
+                specs: [
+                    "Maksimum Mənzil: 3,400 dəniz mili (6,300 km)",
+                    "Kruiz Sürəti: 511 mil/saat (823 km/saat)",
+                    "Sərnişin Tutumu: 180 (tipik iki sinif konfiqurasiyası)",
+                    "Qanad Uzunluğu: 117 ft 5 in (35.8 m)",
+                    "Uzunluq: 123 ft 3 in (37.57 m)",
+                    "Hündürlük: 39 ft 6 in (12.03 m)",
+                    "Mühərriklər: 2 × CFM International LEAP-1A və ya Pratt & Whitney PW1100G"
+                ],
+                features: [
+                    "Əvvəlki nəsillə müqayisədə yanacaq sərfiyyatında 20% azalma",
+                    "Səs izində 50% azalma",
+                    "Daha geniş salon və böyük yuxarı yük bölmələri",
+                    "Qabaqcıl uçuş zamanı əyləncə sistemi",
+                    "LED əhvalişığı işıqlandırması"
+                ]
+            },
+            b787: {
+                name: "Boeing 787 Dreamliner",
+                image: "https://images.unsplash.com/photo-1578839951301-5d5d5b5b5b5b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80",
+                description: "Boeing 787 Dreamliner inqilabi geniş gövdəli, iki mühərrikli reaktiv təyyarədir. Əsasən kompozit materiallardan hazırlanmış bir gövdə ilə ilk təyyarədir və fövqəladə yanacaq səmərəliliyi və sərnişin rahatlığı təqdim edir.",
+                specs: [
+                    "Maksimum Mənzil: 7,530 dəniz mili (13,950 km)",
+                    "Kruiz Sürəti: 587 mil/saat (945 km/saat)",
+                    "Sərnişin Tutumu: 290 (tipik iki sinif konfiqurasiyası)",
+                    "Qanad Uzunluğu: 197 ft 3 in (60.1 m)",
+                    "Uzunluq: 186 ft 1 in (56.7 m)",
+                    "Hündürlük: 55 ft 6 in (16.9 m)",
+                    "Mühərriklər: 2 × General Electric GEnx və ya Rolls-Royce Trent 1000"
+                ],
+                features: [
+                    "Kompozit materiallar əsas strukturun 50%-ni təşkil edir",
+                    "Böyük elektronik olaraq qaralabilən pəncərələr",
+                    "Artırılmış rahatlıq üçün daha yüksək salon rütubəti",
+                    "Aşağı salon hündürlüyü (6,000 ft vs. 8,000 ft)",
+                    "Qabaqcıl hava filtrasiya sistemi"
+                ]
+            },
+            a350: {
+                name: "Airbus A350-900",
+                image: "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80",
+                description: "Airbus A350-900 Airbus tərəfindən hazırlanmış uzaqməsafəli, geniş gövdəli iki mühərrikli reaktiv təyyarədir. Gövdəsi və qanad strukturu əsasən karbon-lif gücləndirilmiş polimerdən hazırlanmış ilk Airbus təyyarəsidir.",
+                specs: [
+                    "Maksimum Mənzil: 8,100 dəniz mili (15,000 km)",
+                    "Kruiz Sürəti: 567 mil/saat (913 km/saat)",
+                    "Sərnişin Tutumu: 325 (tipik üç sinif konfiqurasiyası)",
+                    "Qanad Uzunluğu: 212 ft 5 in (64.75 m)",
+                    "Uzunluq: 219 ft 2 in (66.8 m)",
+                    "Hündürlük: 55 ft 11 in (17.05 m)",
+                    "Mühərriklər: 2 × Rolls-Royce Trent XWB"
+                ],
+                features: [
+                    "İki koridorlu təyyarələr arasında ən geniş salon",
+                    "8% aşağı yanacaq sərfi ilə qabaqcıl aerodinamik dizayn",
+                    "Fərdiləşdirilə bilən əhvalişığı işıqlandırması ilə tam LED işıqlandırma sistemi",
+                    "Qabaqcıl səs izolyasiyası ilə daha sakit salon",
+                    "Sinifində ən böyük yuxarı yük bölmələri"
+                ]
+            },
+            b777: {
+                name: "Boeing 777-300ER",
+                image: "https://images.unsplash.com/photo-1544098282-7dd2f47d6549?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80",
+                description: "Boeing 777-300ER (Uzatılmış Mənzil) geniş gövdəli, uzaqməsafəli, iki mühərrikli reaktiv təyyarədir. Dünyanın ən böyük iki reaktiv mühərrikli təyyarəsidir və təkcəsinə uzun məsafəli okeanlararası uçuşlar üçün ideal edən təsirli bir mənzili var.",
+                specs: [
+                    "Maksimum Mənzil: 7,370 dəniz mili (13,650 km)",
+                    "Kruiz Sürəti: 590 mil/saat (950 km/saat)",
+                    "Sərnişin Tutumu: 396 (tipik üç sinif konfiqurasiyası)",
+                    "Qanad Uzunluğu: 212 ft 7 in (64.8 m)",
+                    "Uzunluq: 242 ft 4 in (73.9 m)",
+                    "Hündürlük: 60 ft 8 in (18.5 m)",
+                    "Mühərriklər: 2 × General Electric GE90-115B"
+                ],
+                features: [
+                    "GE90-115B mühərrikləri indiyə qədər qurulmuş ən güclü reaktiv mühərriklərdir",
+                    "Yaxşılaşdırılmış aerodinamika üçün maili qanad ucları",
+                    "LCD displeyləri olan qabaqcıl uçuş kokpiti",
+                    "Geniş yuxarı yük bölmələri olan rahat salon",
+                    "99% göndərmə etibarlılığı ilə sübut olunmuş etibarlılıq"
+                ]
+            }
+        };
+        
+        // Təyyarə detalları ilə modalı aç
+        viewDetailsButtons.forEach(button => {
+            button.addEventListener('click', () => {
+                const aircraftId = button.dataset.aircraft;
+                const aircraft = aircraftData[aircraftId];
+                
+                modalBody.innerHTML = `
+                    <h2 style="color: var(--primary); margin-bottom: 20px;">${aircraft.name}</h2>
+                    <img src="${aircraft.image}" alt="${aircraft.name}" class="modal-img">
+                    <p style="margin-bottom: 20px;">${aircraft.description}</p>
+                    
+                    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; margin-top: 30px;">
+                        <div>
+                            <h3 style="color: var(--primary); margin-bottom: 15px;">Spesifikasiyalar</h3>
+                            <ul style="list-style-type: disc; padding-left: 20px;">
+                                ${aircraft.specs.map(spec => `<li style="margin-bottom: 8px;">${spec}</li>`).join('')}
+                            </ul>
+                        </div>
+                        <div>
+                            <h3 style="color: var(--primary); margin-bottom: 15px;">Əsas Xüsusiyyətlər</h3>
+                            <ul style="list-style-type: disc; padding-left: 20px;">
+                                ${aircraft.features.map(feature => `<li style="margin-bottom: 8px;">${feature}</li>`).join('')}
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <div style="text-align: center; margin-top: 30px;">
+                        <a href="https://www.azal.az/az" target="_blank" class="btn">${aircraft.name} ilə Uçuş Rezervasiya Et</a>
+                    </div>
+                `;
+                
+                aircraftModal.classList.add('active');
+                document.body.style.overflow = 'hidden';
+            });
+        });
+        
+        // Modalı bağla
+        modalClose.addEventListener('click', () => {
+            aircraftModal.classList.remove('active');
+            document.body.style.overflow = 'auto';
+        });
+        
+        // Modalın xaricinə klikləyəndə bağla
+        aircraftModal.addEventListener('click', (e) => {
+            if (e.target === aircraftModal) {
+                aircraftModal.classList.remove('active');
+                document.body.style.overflow = 'auto';
+            }
+        });
+        
+        // Animasiyalı Statistik Sayğac
+        function animateStats() {
+            const targetValues = [35, 27, 85, 3000000];
+const durations = [2000, 2000, 2000, 3000];
+            const increments = [50, 20, 10, 10000];
+            
+            stats.forEach((stat, index) => {
+                let current = 0;
+                const target = targetValues[index];
+                const duration = durations[index];
+                const increment = increments[index];
+                const steps = duration / (target / increment);
+                let step = 0;
+                
+                const timer = setInterval(() => {
+                    current += increment;
+                    step++;
+                    
+                    if (current >= target || step >= steps) {
+                        current = target;
+                        clearInterval(timer);
+                    }
+                    
+                    // Əgər sərnişin sayıdırsa, vergillə formatla
+                    if (index === 3) {
+                        stat.textContent = current.toLocaleString();
+                    } else {
+                        stat.textContent = current;
+                    }
+                }, duration / (target / increment));
+            });
+        }
+        
+        // Animasiyalar üçün Intersection Observer
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+        
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('fade-in');
+                    
+                    // Statistik hissə görünəndə statistikaları animasiya et
+                    if (entry.target.classList.contains('stats')) {
+                        animateStats();
+                    }
+                }
+            });
+        }, observerOptions);
+        
+        // Animasiya üçün elementləri müşahidə et
+        document.querySelectorAll('.fleet-card, .destination-card, .service-card, .about-content, .stats').forEach(el => {
+            observer.observe(el);
+        });
+        
+        // Anchor linkləri üçün hamar sürüşdürmə
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                if (targetId === '#') return;
+                
+                const targetElement = document.querySelector(targetId);
+                if (targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+        
+        // Statistikaları 0 ilə başlat
+        window.addEventListener('load', () => {
+            stats.forEach(stat => {
+                stat.textContent = '0';
+            });
+        });
+    </script>
+</body>
+</html>
